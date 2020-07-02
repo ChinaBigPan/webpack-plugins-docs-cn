@@ -81,8 +81,8 @@ module.exports = {
 
 ### from
 
-- 类型：String
-- 默认：Undefined
+- 类型：`String`
+- 默认：`Undefined`
 
 通配符或我们拷贝文件的路径。通配符支持[快速通配模式语法](https://github.com/mrmlnc/fast-glob#pattern-syntax)，只能为字符串。
 
@@ -156,7 +156,7 @@ module.exports = {
 
 ### to
 
-类型：String
+类型：`String`
 默认：`compiler.options.output`
 
 输出的路径。
@@ -190,7 +190,7 @@ module.exports = {
 
 ### context
 
-类型：String
+类型：`String`
 默认：`options.context|compiler.options.context`
 
 这一项决定了如何解释上面`from`路径
@@ -215,7 +215,224 @@ module.exports = {
 };
 ```
 
+`context`配置项可以传入绝对或相对路径。如果`context`是相对路径，那么就会被转换为基于`compiler.options.context`的绝对路径。
+
+此外，`context`表示如何解释搜索结果。进一步讲，它就是干这个的。
+
+若要确定从哪里的资源架构拷贝到目标文件夹，请使用`context`配置项。
+
+如果`from`配置为一个文件，那么`context`就是该文件所在的目录。因此，结果只会是文件名。
+
+如果`from`配置为一个目录，那么`context`和`from`相同也是这个目录。在这种情况下，结果则是相对于指定目录找到的文件夹和文件的层次结构。
+
+如果`from`配置为通配符，那么就会无视`context`配置项，结果也将是`from`中指定的结构。
+
+更多[示例](./copy-webpack-plugin.html#examples)
+
 ### globOptions
 
+类型：`对象`
+默认：`undefined`
+
+允许配置插件使用的通配模式匹配库。请参阅[所支持配置项项的列表](https://github.com/sindresorhus/globby#options)以从选择中排除文件，您应该使用[globOptions.ignore配置项](https://github.com/mrmlnc/fast-glob#ignore)。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                from: 'public/**/*',
+                globOptions: {
+                        dot: true,
+                        gitignore: true,
+                        ignore: ['**/file.*', '**/ignored-directory/**'],
+                    },
+                },
+            ],
+        }),
+    ],
+};
+```
+
+### toType
+
+类型：`String`
+默认：`undefined`
+
+决定`to`配置项是什么 —— 目录、文件或模板。有些时候很难说什么是`to`，举个例子：`path/to/dir-with.ext`。如果你想复制目录中的文件，您需要使用`dir`。我们尝试着自动识别`type`，所以您可能不需要它。
+
+| 名称 | 类型 | 默认值 | 描述 |
+|:---:|:---:|:---:|:---|
+| `'dir'` | `{String}` | `undefined` | 如果`to`没有扩展名或是以`/`结尾 |
+| `'file'` | `{String}` | `undefined` | 如果`to`既不是目录也不是模板 |
+| `'template'` | `{String}` | `undefined` | 如果`to`包含了[模板模式](https://github.com/webpack-contrib/file-loader#placeholders) |
+
+#### `'dir'`
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+        patterns: [
+                {
+                    from: 'path/to/file.txt',
+                    to: 'directory/with/extension.ext',
+                    toType: 'dir',
+                },
+            ],
+        }),
+    ],
+};
+```
+
+#### `'file'`
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'path/to/file.txt',
+                    to: 'file/without/extension',
+                    toType: 'file',
+                },
+            ],
+        }),
+    ],
+};
+```
+
+#### `'template'`
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                from: 'src/',
+                to: 'dest/[name].[hash].[ext]',
+                toType: 'template',
+                },
+            ],
+        }),
+    ],
+};
+```
+
+### force
+
+类型：`Boolean`
+默认：`false`
+
+覆盖已经存在于`compilation.assets`中的文件。(通常由其他插件和加载器添加)。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'src/**/*',
+                    to: 'dest/',
+                    force: true,
+                },
+            ],
+        }),
+    ],
+};
+```
+
+### `flattern`
+
+类型：`Boolean`
+默认：`false`
+
+移除所有的目录引用，仅复制文件名。
+
+:::warning
+⚠️如果拥有相同名字的文件，那么结果是不确定的。
+:::
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'src/**/*',
+                    to: 'dest/',
+                    flatten: true,
+                },
+            ],
+        }),
+    ],
+};
+```
+
+### transform
+
+类型：`Function`
+默认：`undefined`
+
+允许修改文件内容。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'src/*.png',
+                    to: 'dest/',
+                    // The `content` argument is a [`Buffer`](https://nodejs.org/api/buffer.html) object, it could be converted to a `String` to be processed using `content.toString()`
+                    // The `absoluteFrom` argument is a `String`, it is absolute path from where the file is being copied
+                    transform(content, absoluteFrom) {
+                        return optimize(content);
+                    },
+                },
+            ],
+        }),
+    ],
+};
+```
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'src/*.png',
+                    to: 'dest/',
+                    transform(content, path) {
+                        return Promise.resolve(optimize(content));
+                    },
+                },
+            ],
+        }),
+    ],
+};
+```
+
+### cacheTransform
 
 
