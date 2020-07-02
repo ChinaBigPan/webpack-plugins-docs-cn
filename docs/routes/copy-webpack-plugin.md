@@ -65,3 +65,157 @@ module.exports = {
 
 ### 模式
 
+| 名称 | 类型 | 默认 | 描述 |
+|:---:|:---:|:---:|:---|
+| [from](./copy-webpack-plugin.html#from) | String | undefined | 通配符或我们拷贝文件的路径 |
+| [to](./copy-webpack-plugin.html#to) | String | compiler.options.output | 输出路径 |
+| [context](./copy-webpack-plugin.html#context) | String | options.context 或 compiler.options.context | 这一项决定了如何解释上面`from`路径|
+| [globOptions](./copy-webpack-plugin.html#globOptions) | Object | undefined |通配符模式的配置项，可设置 `ignore`  |
+| [toType](./copy-webpack-plugin.html#toType) | String | undefined | 这一项定义了上面`to`的配置项 - 目录、文件或模板 |
+| [force](./copy-webpack-plugin.html#force) | Boolean | false | 覆盖已经存在于`compilation.assets`中的文件。(通常由其他插件和加载器添加) |
+| [flattern](./copy-webpack-plugin.html#flattern) | Boolean | false | 移除所有的目录引用，仅复制文件名。 |
+| [transform](./copy-webpack-plugin.html#transform) | Function | undefined | 允许修改文件内容。|
+| [cacheTransform](./copy-webpack-plugin.html#cacheTransform) | Boolean/String/Object | false | 启用`transfrom`缓存。您可以使用`{ cache: { key: 'my-cache-key' } }`来使缓存无效。|
+| [transformPath](./copy-webpack-plugin.html#transfromPath) | Function | undefined | 允许修改写入路径 |
+| [noErrorOnMissing](./copy-webpack-plugin.html#noErrorOnMissing) | Boolean | false | 丢失文件时不产生错误 |
+
+### from
+
+- 类型：String
+- 默认：Undefined
+
+通配符或我们拷贝文件的路径。通配符支持[快速通配模式语法](https://github.com/mrmlnc/fast-glob#pattern-syntax)，只能为字符串。
+
+> 如果是通配符的话（如 `path\to\file.ext`），不要在 `from` 配置项中直接使用 `\\`。因为在 UNIX 中，反斜杠是路径组件的有效字符，而不是分隔符。在 Windows 中，正斜杠和反斜杠都是分隔符。请用 `/` 代替。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        'relative/path/to/file.ext',
+        'relative/path/to/dir',
+        path.resolve(__dirname, 'src', 'file.ext'),
+        path.resolve(__dirname, 'src', 'dir'),
+        '**/*',
+        {
+          from: '**/*',
+        },
+        // 如果绝对路径是“通配符”，我们将反斜杠替换为正斜杠，因为在“通配符”中只能使用正斜杠。
+        path.posix.join(
+          path.resolve(__dirname, 'src').replace(/\\/g, '/'),
+          '*.txt'
+        ),
+      ],
+    }),
+  ],
+};
+```
+
+**对于 windows 系统**
+
+如果在 Windows 中将 from 定义为绝对文件路径或绝对文件夹路径，则可以使用 Windows 路径段`\\`。
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'file.txt'),
+        },
+      ],
+    }),
+  ],
+};
+```
+
+但是您应该始终在通配符表达式中使用正斜杠，请参阅[快速通配符手册](https://github.com/mrmlnc/fast-glob#how-to-write-patterns-on-windows)。
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          // 如果绝对路径是“通配符”，我们将反斜杠替换为正斜杠，因为在“通配符”中只能使用正斜杠。
+          from: path.posix.join(
+            path.resolve(__dirname, 'fixtures').replace(/\\/g, '/'),
+            '*.txt'
+          ),
+        },
+      ],
+    }),
+  ],
+};
+```
+
+`context`根据`from`的类型(通配符、文件或目录)采取不同行为。更多[示例](./copy-webpack-plugin.html#examples)
+
+### to
+
+类型：String
+默认：`compiler.options.output`
+
+输出的路径。
+
+> 如果是通配符的话（如 `path\to\dest`），不要在 `to` 配置项中直接使用 `\\`。因为在 UNIX 中，反斜杠是路径组件的有效字符，而不是分隔符。在 Windows 中，正斜杠和反斜杠都是分隔符。请用 `/`或`path`方法代替。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: '**/*',
+          to: 'relative/path/to/dest/',
+        },
+        {
+          from: '**/*',
+          to: '/absolute/path/to/dest/',
+        },
+        {
+          from: '**/*',
+          to: '[path][name].[contenthash].[ext]',
+        },
+      ],
+    }),
+  ],
+};
+```
+
+### context
+
+类型：String
+默认：`options.context|compiler.options.context`
+
+这一项决定了如何解释上面`from`路径
+
+> 如果是通配符的话（如 `path\to\context`），不要在 `context` 配置项中直接使用 `\\`。因为在 UNIX 中，反斜杠是路径组件的有效字符，而不是分隔符。在 Windows 中，正斜杠和反斜杠都是分隔符。请用 `/`或`path`方法代替。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'src/*.txt',
+          to: 'dest/',
+          context: 'app/',
+        },
+      ],
+    }),
+  ],
+};
+```
+
+### globOptions
+
+
+

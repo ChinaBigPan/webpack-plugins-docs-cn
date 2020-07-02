@@ -45,7 +45,7 @@ module.exports= {
             {
                 title: "copy-webpack-plugin",
                 path: '/routes/copy-webpack-plugin.html',
-                sidebarDepth: 2
+                sidebarDepth: 3
             }
         ]
     },
