@@ -46,6 +46,11 @@ module.exports= {
                 title: "copy-webpack-plugin",
                 path: '/routes/copy-webpack-plugin.html',
                 sidebarDepth: 3
+            },
+            {
+                title: "write-file-webpack-plugin",
+                path: '/routes/write-file-webpack-plugin.html',
+                sidebarDepth: 2
             }
         ]
     },
