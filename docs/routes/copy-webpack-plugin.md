@@ -63,7 +63,7 @@ module.exports = {
 };
 ```
 
-### 模式
+## pattern
 
 | 名称 | 类型 | 默认 | 描述 |
 |:---:|:---:|:---:|:---|
@@ -355,7 +355,7 @@ module.exports = {
 };
 ```
 
-### `flattern`
+### flattern
 
 类型：`Boolean`
 默认：`false`
@@ -400,9 +400,9 @@ module.exports = {
             patterns: [
                 {
                     from: 'src/*.png',
-                    to: 'dest/',
-                    // The `content` argument is a [`Buffer`](https://nodejs.org/api/buffer.html) object, it could be converted to a `String` to be processed using `content.toString()`
-                    // The `absoluteFrom` argument is a `String`, it is absolute path from where the file is being copied
+                    to: 'dest/', 
+                    // content 参数是一个 Buffer 对象，可以使用 content.toString() 转换为字符串。
+                    // absoluteFrom 参数是字符串，表示拷贝文件的绝对路径
                     transform(content, absoluteFrom) {
                         return optimize(content);
                     },
@@ -435,4 +435,397 @@ module.exports = {
 
 ### cacheTransform
 
+类型：`Boolean|String|Object`
+默认：`false`
 
+启用/弃用并配置配置缓存。默认的路径是缓存目录：`node_modules/.cache/copy-webpack-plugin`。
+
+#### Boolean
+
+启用/弃用`transform`缓存。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'src/*.png',
+                    to: 'dest/',
+                    transform(content, path) {
+                        return optimize(content);
+                    },
+                    cacheTransform: true,
+                },
+            ],
+        }),
+    ],
+};
+```
+
+#### Object
+
+启用`transform`缓存并设置缓存目录和失效键。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                from: 'src/*.png',
+                to: 'dest/',
+                transform(content, path) {
+                    return optimize(content);
+                },
+                cacheTransform: {
+                    directory: path.resolve(__dirname, 'cache-directory'),
+                    keys: {
+                        // 可能是有用的基于外部值的无效缓存
+                        // 举例：您可以基于`process.version - { node: process.version }`来使缓存无效
+                        key: 'value',
+                        },
+                    },
+                },
+            ],
+        }),
+    ],
+};
+```
+
+您可以使用函数来设置无效键。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+    plugins: [
+        new CopyPlugin({
+            patterns: [
+                {
+                    from: 'src/*.png',
+                    to: 'dest/',
+                    transform(content, path) {
+                        return optimize(content);
+                    },
+                    cacheTransform: {
+                        directory: path.resolve(__dirname, 'cache-directory'),
+                        keys: (defaultCacheKeys, absoluteFrom) => {
+                        const keys = getCustomCacheInvalidationKeysSync();
+
+                        return {
+                                ...defaultCacheKeys,
+                                keys,
+                            };
+                        },
+                    },
+                },
+            ],
+        }),
+    ],
+};
+
+```
+
+异步函数。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'src/*.png',
+          to: 'dest/',
+          transform(content, path) {
+            return optimize(content);
+          },
+          cacheTransform: {
+            directory: path.resolve(__dirname, 'cache-directory'),
+            keys: async (defaultCacheKeys, absoluteFrom) => {
+              const keys = await getCustomCacheInvalidationKeysAsync();
+
+              return {
+                ...defaultCacheKeys,
+                keys,
+              };
+            },
+          },
+        },
+      ],
+    }),
+  ],
+};
+```
+
+### transformPath
+
+类型：`Function`
+默认：`undefined`
+
+允许修改写入路径。
+
+> 如果是通配符的话（如 `path\to\newFile`），不要在 `transformPath` 配置项中直接使用 `\\`。因为在 UNIX 中，反斜杠是路径组件的有效字符，而不是分隔符。在 Windows 中，正斜杠和反斜杠都是分隔符。请用 `/`或`path`方法代替。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'src/*.png',
+          to: 'dest/',
+          transformPath(targetPath, absolutePath) {
+            return 'newPath';
+          },
+        },
+      ],
+    }),
+  ],
+};
+
+```
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'src/*.png',
+          to: 'dest/',
+          transformPath(targetPath, absolutePath) {
+            return Promise.resolve('newPath');
+          },
+        },
+      ],
+    }),
+  ],
+};
+
+```
+
+### noErrorOnMissing
+
+类型：`Boolean`
+默认：`false`
+
+在丢失文件时不会产生错误。
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'missing-file.txt'),
+          noErrorOnMissing: true,
+        },
+      ],
+    }),
+  ],
+};
+
+```
+
+## options
+
+| 名称 | 类型 | 默认值 | 描述 |
+|:---:|:---:|:---:|---|
+| `concurrency` | `Number` | `100` | 向`fs`模块并发请求的数量限制。|
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [...patterns],
+      options: { concurrency: 50 },
+    }),
+  ],
+};
+```
+
+### 示例
+
+`from`的不同变体(`glob`、`file`或`dir`)。
+
+以下面的文件结构为例：
+
+```text
+src/directory-nested/deep-nested/deepnested-file.txt
+src/directory-nested/nested-file.txt
+```
+
+若`from`是`Glob(通配符)`。
+
+那么您在`from`配置的应当是：
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: 'src/directory-nested/**/*',
+        },
+      ],
+    }),
+  ],
+};
+```
+
+结果：
+
+```text
+src/directory-nested/deep-nested/deepnested-file.txt,
+src/directory-nested/nested-file.txt
+```
+
+如果您希望结果仅仅是`src/directory-nested/`，那么`from`中应当只设置`通配符(glob)`。应当将发生搜索行为的文件夹移到`context`中。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: '**/*',
+          context: path.resolve(__dirname, 'src', 'directory-nested'),
+        },
+      ],
+    }),
+  ],
+};
+
+```
+
+结果：
+
+```txt
+deep-nested/deepnested-file.txt,
+nested-file.txt
+```
+
+若`from`是`目录(dir)`。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, 'src', 'directory-nested'),
+        },
+      ],
+    }),
+  ],
+};
+```
+
+结果：
+
+```txt
+deep-nested/deepnested-file.txt,
+nested-file.txt
+```
+
+从技术上讲，带有预定义上下文的`**/*`等同于指定目录。
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: '**/*',
+          context: path.resolve(__dirname, 'src', 'directory-nested'),
+        },
+      ],
+    }),
+  ],
+};
+```
+
+结果：
+
+```txt
+deep-nested/deepnested-file.txt,
+nested-file.txt
+```
+
+若`from`是`文件`.
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.resolve(
+            __dirname,
+            'src',
+            'directory-nested',
+            'nested-file.txt'
+          ),
+        },
+      ],
+    }),
+  ],
+};
+```
+
+结果：
+
+```txt
+nested-file.txt
+```
+
+**忽略文件的写法**
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  plugins: [
+    new CopyPlugin({
+      patterns: [
+        {
+          from: path.posix.join(
+            path.resolve(__dirname, 'src').replace(/\\/g, '/'),
+            '**/*'
+          ),
+          globOptions: {
+            ignore: [
+              // Ignore all `txt` files
+              '**/*.txt',
+              // Ignore all files in all subdirectories
+              '**/subdir/**',
+            ],
+          },
+        },
+      ],
+    }),
+  ],
+};
+
+```
