@@ -51,6 +51,11 @@ module.exports= {
                 title: "write-file-webpack-plugin",
                 path: '/routes/write-file-webpack-plugin.html',
                 sidebarDepth: 2
+            },
+            {
+                title: "prepack-webpack-plugin",
+                path: '/routes/prepack-webpack-plugin.html',
+                sidebarDepth: 2
             }
         ]
     },
