@@ -56,6 +56,11 @@ module.exports= {
                 title: "prepack-webpack-plugin",
                 path: '/routes/prepack-webpack-plugin.html',
                 sidebarDepth: 2
+            },
+            {
+                title: "offline-plugin",
+                path: '/routes/offline-plugin.html',
+                sidebarDepth: 3
             }
         ]
     },

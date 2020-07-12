@@ -11,7 +11,7 @@ meta:
   - name: keywords
     content: webpack, plugin
   - name: feversion
-    content: 多个版本
+    content: 前往 →
   - name: fetags
     content: "[{'kind': 'webpack', 'text': 'webpack'}, {'kind':'plugin', 'text': '插件'}]"
 features:
@@ -32,6 +32,7 @@ footer: MIT Licensed | Translated By 大笑
 [copy-webpack-plugin]:/routes/copy-webpack-plugin.html
 [write-file-webpack-plugin]:/routes/write-file-webpack-plugin.html
 [prepack-webpack-plugin]:/routes/prepack-webpack-plugin.html
+[offline-plugin]:/routes/offline-plugin.html
 
 
 
@@ -43,3 +44,4 @@ footer: MIT Licensed | Translated By 大笑
 | [copy-webpack-plugin][copy-webpack-plugin] | 6.0.3 | 将已经存在的单个文件或整个目录复制到构建目录。 |
 | [write-file-webpack-plugin][write-file-webpack-plugin] | 4.5.1 | 强制`webpack-dev-server`程序将打包文件写入文件系统。当使用的是`webpack`程序而非`webpack-dev-server`时，这个插件没有效果。|
 | [prepack-webpack-plugin][prepack-webpack-plugin] | 1.1.2 | `webpack`的[prepack](https://prepack.io/)插件 |
+| [offline-plugin][offline-plugin] | 5.0.7 | 本插件旨在为`webpack`项目提供离线体验。 |
