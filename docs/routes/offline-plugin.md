@@ -71,3 +71,12 @@ OfflinePluginRuntime.install({
 
 这些配置项都是可选的，[这里是默认设置](https://github.com/NekR/offline-plugin/blob/master/src/default-options.js)
 
+[app shell model]:https://developers.google.com/web/fundamentals/architecture/app-shell
+
+| 名称 | 类型 | 默认值 | 描述 |
+|:---:|:---:|:---:|----|
+| appShell | `string`  | null | 以[app shell model][app shell model]启动您的应用。可以设置为希望所有导航请求都返回的 HTML 文件。例如：`/app-shell.html` |
+| responseStrategy | `cache-first | network-first` | `cache-first` | 若设置为`cache-first`，则所有的请求均优先检查缓存，如果缓存是空的，则请求网络。若使用`network-first`，所有请求首先发送到网络，如果网络请求失败，则查询缓存作为回退。|
+| externals | `Array<string>` | null | 指定要缓存的其他(构建过程中的外部)URL. <br /> 例如：`['/static/img/media.png', 'https://fonts.googleapis.com/css?family=Roboto']` |
+| excludes | `Array<string | globs_pattern>` | `['**/.*', '**/*.map', '**/*.gz']` | 将哪些静态文件排除出缓存。以`.`开头和以`.map`或`.gz`为结尾的文件则被排除在外。<br /> ⚠️注意：该项是在`rewrites`之前起作用的。|
+| autoUpdate | `true | number` | `false` | |
