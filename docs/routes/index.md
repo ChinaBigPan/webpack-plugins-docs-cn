@@ -10,7 +10,8 @@ title: 目录
 [write-file-webpack-plugin]:https://github.com/gajus/write-file-webpack-plugin
 [prepack-webpack-plugin]:https://github.com/gajus/prepack-webpack-plugin
 [offline-plugin]:https://github.com/NekR/offline-plugin
-
+[clean-webpack-plugin]:https://github.com/johnagan/clean-webpack-plugin
+[webpack-hook-plugin]:https://github.com/tienne/webpack-hook-plugin
 
 
 | 插件(点击前往原地址) | 版本 | 描述 |
@@ -22,3 +23,5 @@ title: 目录
 | [write-file-webpack-plugin][write-file-webpack-plugin] | 4.5.1 | 强制`webpack-dev-server`程序将打包文件写入文件系统。当使用的是`webpack`程序而非`webpack-dev-server`时，这个插件没有效果。|
 | [prepack-webpack-plugin][prepack-webpack-plugin] | 1.1.2 | `webpack`的[prepack](https://prepack.io/)插件 |
 | [offline-plugin][offline-plugin] | 5.0.7 | 本插件旨在为`webpack`项目提供离线体验。 |
+| [clean-webpack-plugin][clean-webpack-plugin] | 3.0.0 | 用于删除/清理构建文件夹的 webpack 插件。|
+| [webpack-hook-plugin][webpack-hook-plugin] | 1.0.7 | 允许你在`webpack`构建之前或之后运行`shell`命令。 |

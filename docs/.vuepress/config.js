@@ -61,6 +61,16 @@ module.exports= {
                 title: "offline-plugin",
                 path: '/routes/offline-plugin.html',
                 sidebarDepth: 3
+            },
+            {
+                title: "clean-webpack-plugin",
+                path: 'routes/clean-webpack-plugin.html',
+                sidebarDepth: 2
+            },
+            {
+                title: "webpack-hook-plugin",
+                path: "routes/webpack-hook-plugin.html",
+                sidebarDepth: 2
             }
         ]
     },

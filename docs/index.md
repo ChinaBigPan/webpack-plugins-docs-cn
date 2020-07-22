@@ -33,6 +33,8 @@ footer: MIT Licensed | Translated By 大笑
 [write-file-webpack-plugin]:/routes/write-file-webpack-plugin.html
 [prepack-webpack-plugin]:/routes/prepack-webpack-plugin.html
 [offline-plugin]:/routes/offline-plugin.html
+[clean-webpack-plugin]:/routes/clean-webpack-plugin.html
+[webpack-hook-plugin]:/routes/webpack-hook-plugin.html
 
 
 
@@ -45,3 +47,21 @@ footer: MIT Licensed | Translated By 大笑
 | [write-file-webpack-plugin][write-file-webpack-plugin] | 4.5.1 | 强制`webpack-dev-server`程序将打包文件写入文件系统。当使用的是`webpack`程序而非`webpack-dev-server`时，这个插件没有效果。|
 | [prepack-webpack-plugin][prepack-webpack-plugin] | 1.1.2 | `webpack`的[prepack](https://prepack.io/)插件 |
 | [offline-plugin][offline-plugin] | 5.0.7 | 本插件旨在为`webpack`项目提供离线体验。 |
+| [clean-webpack-plugin][clean-webpack-plugin] | 3.0.0 | 用于删除/清理构建文件夹的 webpack 插件。|
+| [webpack-hook-plugin][webpack-hook-plugin] | 1.0.7 | 允许你在`webpack`构建之前或之后运行`shell`命令。 |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
