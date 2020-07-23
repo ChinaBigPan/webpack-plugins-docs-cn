@@ -71,6 +71,21 @@ module.exports= {
                 title: "webpack-hook-plugin",
                 path: "routes/webpack-hook-plugin.html",
                 sidebarDepth: 2
+            },
+            {
+                title: "build-hash-webpack-plugin",
+                path: "routes/build-hash-webpack-plugin",
+                sidebarDepth: 2
+            },
+            {
+                title: "webpack-file-manager-plugin",
+                path: "routes/webpack-file-manager-plugin",
+                sidebarDepth: 2
+            },
+            {
+                title: "duplicate-package-checker-webpack-plugin",
+                path: "routes/duplicate-package-checker-webpack-plugin",
+                sidebarDepth: 2
             }
         ]
     },

@@ -18,7 +18,7 @@ features:
   - title: 
     details: 
   - title: 插件集
-    details: 这里或许有你想要的 webpack 插件中文文档集合
+    details: 这里或许有你想要的 webpack 插件中文文档
   - title: 
     details: 
 footer: MIT Licensed | Translated By 大笑
@@ -35,7 +35,9 @@ footer: MIT Licensed | Translated By 大笑
 [offline-plugin]:/routes/offline-plugin.html
 [clean-webpack-plugin]:/routes/clean-webpack-plugin.html
 [webpack-hook-plugin]:/routes/webpack-hook-plugin.html
-
+[build-hash-webpack-plugin]:/routes/build-hash-webpack-plugin.html
+[webpack-file-manager-plugin]:/routes/webpack-file-manager-plugin.html
+[duplicate-package-checker-webpack-plugin]: /routes/duplicate-package-checker-webpack-plugin.html
 
 
 | 插件 | 版本 | 描述 |
@@ -49,8 +51,9 @@ footer: MIT Licensed | Translated By 大笑
 | [offline-plugin][offline-plugin] | 5.0.7 | 本插件旨在为`webpack`项目提供离线体验。 |
 | [clean-webpack-plugin][clean-webpack-plugin] | 3.0.0 | 用于删除/清理构建文件夹的 webpack 插件。|
 | [webpack-hook-plugin][webpack-hook-plugin] | 1.0.7 | 允许你在`webpack`构建之前或之后运行`shell`命令。 |
-
-
+| [build-hash-webpack-plugin][build-hash-webpack-plugin] | 1.0.4 | 生成包含构建hash的json文件的webpack插件。|
+| [webpack-file-manager-plugin][webpack-file-manager-plugin] | 2.0.5 | 这个 Webpack 插件允许您在构建前或构建后复制、归档(.zip/.tar/.tar.gz)、移动、删除文件和目录。|
+| [duplicate-package-checker-webpack-plugin][duplicate-package-checker-webpack-plugin] | 3.0.0 | 当你的包中含有多个版本的同一文件时发出警告。|
 
 
 
