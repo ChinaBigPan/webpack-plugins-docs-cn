@@ -44,24 +44,23 @@ module.exports = {
 
 ```js
 new DuplicatePackageCheckerPlugin({
-  // Also show module that is requiring each duplicate package (default: false)
+  // 显示需要重复依赖包的模块（默认值：false）
   verbose: true,
-  // Emit errors instead of warnings (default: false)
+  // 发出错误而不是警告(默认值：false)
   emitError: true,
-  // Show help message if duplicate packages are found (default: true)
+  // 如果发现重复的依赖包则展示帮助信息(默认值：true)
   showHelp: false,
-  // Warn also if major versions differ (default: true)
+  // 如果主要版本不同，也会发出警告 (默认值：true)
   strict: false,
   /**
-   * Exclude instances of packages from the results.
-   * If all instances of a package are excluded, or all instances except one,
-   * then the package is no longer considered duplicated and won't be emitted as a warning/error.
+   * 从结果中排除依赖包的实例。
+   * 如果一个包的所有实例都被排除，或者除了一个实例之外的所有实例都被排除，那么这个包就不再被认为是重复的，并且不会发出警告/错误。
    * @param {Object} instance
-   * @param {string} instance.name The name of the package
-   * @param {string} instance.version The version of the package
-   * @param {string} instance.path Absolute path to the package
-   * @param {?string} instance.issuer Absolute path to the module that requested the package
-   * @returns {boolean} true to exclude the instance, false otherwise
+   * @param {string} instance.name 依赖包名称
+   * @param {string} instance.version 依赖包版本
+   * @param {string} instance.path 依赖包的绝对路径
+   * @param {?string} instance.issuer 请求依赖包的模块的绝对路径
+   * @returns {boolean} true 表示排除该实例，否则为false
    */
   exclude(instance) {
     return instance.name === "fbjs";
@@ -70,6 +69,8 @@ new DuplicatePackageCheckerPlugin({
 ```
 
 ## 严格模式
+
+当 bundle 中存在多个主版本(如v1.0.0 vs v2.0.0)的包时，在严格模式下会发出警告。
 
 ## 解析包中的重复依赖
 
