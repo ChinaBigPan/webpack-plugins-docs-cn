@@ -86,6 +86,11 @@ module.exports= {
                 title: "duplicate-package-checker-webpack-plugin",
                 path: "routes/duplicate-package-checker-webpack-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "webpack-inject-plugin",
+                path: "routes/webpack-inject-plugin",
+                sidebarDepth: 2
             }
         ]
     },
