@@ -91,6 +91,11 @@ module.exports= {
                 title: "webpack-inject-plugin",
                 path: "routes/webpack-inject-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "imagemin-webpack-plugin",
+                path: "routes/imagemin-webpack-plugin",
+                sidebarDepth: 2
             }
         ]
     },

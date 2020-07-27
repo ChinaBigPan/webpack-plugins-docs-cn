@@ -24,7 +24,7 @@ features:
 footer: MIT Licensed | Translated By 大笑
 ---
 
-
+[imagemin]:https://github.com/imagemin/imagemin
 [node-notifier]:https://github.com/mikaelbr/node-notifier
 [webpack-build-notifier]:/routes/webpack-build-notifier.html
 [friendly-errors-webpack-plugin]:/routes/friendly-errors-webpack-plugin.html
@@ -39,6 +39,7 @@ footer: MIT Licensed | Translated By 大笑
 [webpack-file-manager-plugin]:/routes/webpack-file-manager-plugin.html
 [duplicate-package-checker-webpack-plugin]:/routes/duplicate-package-checker-webpack-plugin.html
 [webpack-inject-plugin]:/routes/webpack-inject-plugin.html
+[imagemin-webpack-plugin]:routes/imagemin-webpack-plugin.html
 
 
 | 插件 | 版本 | 描述 |
@@ -56,6 +57,7 @@ footer: MIT Licensed | Translated By 大笑
 | [webpack-file-manager-plugin][webpack-file-manager-plugin] | 2.0.5 | 这个 Webpack 插件允许您在构建前或构建后复制、归档(.zip/.tar/.tar.gz)、移动、删除文件和目录。|
 | [duplicate-package-checker-webpack-plugin][duplicate-package-checker-webpack-plugin] | 3.0.0 | 当你的包中含有多个版本的同一文件时发出警告。|
 | [webpack-inject-plugin][webpack-inject-plugin] | 1.5.4 | 向打包文件中动态注入代码的 webpack 插件。 |
+| [imagemin-webpack-plugin][imagemin-webpack-plugin] | 2.4.2 | 使用[imagemin][imagemin]压缩项目中图片的插件。 |
 
 
 
