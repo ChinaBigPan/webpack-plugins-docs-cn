@@ -18,6 +18,7 @@ title: 目录
 [duplicate-package-checker-webpack-plugin]:https://github.com/darrenscerri/duplicate-package-checker-webpack-plugin
 [webpack-inject-plugin]:https://github.com/adierkens/webpack-inject-plugin
 [imagemin-webpack-plugin]:https://github.com/Klathmon/imagemin-webpack-plugin
+[svg-sprite-webpack-plugin]:https://github.com/TodayTix/svg-sprite-webpack-plugin
 
 
 | 插件(点击前往原地址) | 版本 | 描述 |
@@ -36,6 +37,7 @@ title: 目录
 | [duplicate-package-checker-webpack-plugin][duplicate-package-checker-webpack-plugin] | 3.0.0 | 当你的依赖包中含有多个版本的同一文件时发出警告。|
 | [webpack-inject-plugin][webpack-inject-plugin] | 1.5.4 | 向打包文件中动态注入代码的 webpack 插件。 |
 | [imagemin-webpack-plugin][imagemin-webpack-plugin] | 2.4.2 | 使用[imagemin][imagemin]压缩项目中图片的插件。 |
+| [svg-sprite-webpack-plugin][svg-sprite-webpack-plugin] | 1.0.4 | 使基于`<use>`的SVG图标系统在webpack中更容易使用。|
 
 
 

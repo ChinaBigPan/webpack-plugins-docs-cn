@@ -96,6 +96,11 @@ module.exports= {
                 title: "imagemin-webpack-plugin",
                 path: "routes/imagemin-webpack-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "svg-sprite-webpack-plugin",
+                path: "routes/svg-sprite-webpack-plugin",
+                sidebarDepth: 2
             }
         ]
     },
