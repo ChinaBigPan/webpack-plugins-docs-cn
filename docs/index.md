@@ -41,6 +41,9 @@ footer: MIT Licensed | Translated By 大笑
 [webpack-inject-plugin]:/routes/webpack-inject-plugin.html
 [imagemin-webpack-plugin]:routes/imagemin-webpack-plugin.html
 [svg-sprite-webpack-plugin]:routes/svg-sprite-webpack-plugin.html
+[static-site-generator-webpack-plugin]:routes/static-site-generator-webpack-plugin.html
+
+
 
 | 插件 | 版本 | 描述 |
 |:---:| --- | --- |
@@ -59,7 +62,7 @@ footer: MIT Licensed | Translated By 大笑
 | [webpack-inject-plugin][webpack-inject-plugin] | 1.5.4 | 向打包文件中动态注入代码的 webpack 插件。 |
 | [imagemin-webpack-plugin][imagemin-webpack-plugin] | 2.4.2 | 使用[imagemin][imagemin]压缩项目中图片的插件。 |
 | [svg-sprite-webpack-plugin][svg-sprite-webpack-plugin] | 1.0.4 | 使基于`<use>`的SVG图标系统在webpack中更容易使用。|
-
+| [static-site-generator-webpack-plugin][static-site-generator-webpack-plugin] | 3.4.2 | 由webpack提供的小体积、精简的静态站点生成器。 |
 
 
 

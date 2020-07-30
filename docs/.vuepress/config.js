@@ -101,6 +101,11 @@ module.exports= {
                 title: "svg-sprite-webpack-plugin",
                 path: "routes/svg-sprite-webpack-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "static-site-generator-webpack-plugin",
+                path: "routes/static-site-generator-webpack-plugin",
+                sidebarDepth: 2
             }
         ]
     },
