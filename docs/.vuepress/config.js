@@ -106,6 +106,11 @@ module.exports= {
                 title: "static-site-generator-webpack-plugin",
                 path: "routes/static-site-generator-webpack-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "dynamic-cdn-webpack-plugin",
+                path: "routes/dynamic-cdn-webpack-plugin",
+                sidebarDepth: 2
             }
         ]
     },

@@ -20,6 +20,10 @@ title: 目录
 [imagemin-webpack-plugin]:https://github.com/Klathmon/imagemin-webpack-plugin
 [svg-sprite-webpack-plugin]:https://github.com/TodayTix/svg-sprite-webpack-plugin
 [static-site-generator-webpack-plugin]:https://github.com/markdalgleish/static-site-generator-webpack-plugin 
+[dynamic-cdn-webpack-plugin]:https://github.com/mastilver/dynamic-cdn-webpack-plugin
+
+
+
 
 
 | 插件(点击前往原地址) | 版本 | 描述 |
@@ -40,7 +44,7 @@ title: 目录
 | [imagemin-webpack-plugin][imagemin-webpack-plugin] | 2.4.2 | 使用[imagemin][imagemin]压缩项目中图片的插件。 |
 | [svg-sprite-webpack-plugin][svg-sprite-webpack-plugin] | 1.0.4 | 使基于`<use>`的SVG图标系统在webpack中更容易使用。|
 | [static-site-generator-webpack-plugin][static-site-generator-webpack-plugin] | 3.4.2 | 由webpack提供的小体积、精简的静态站点生成器。 |
-
+| [dynamic-cdn-webpack-plugin][dynamic-cdn-webpack-plugin] | 5.0.0 | 动态地从 CDN 中获取依赖，而非将其捆绑在应用中。  |
 
 
 
