@@ -111,6 +111,11 @@ module.exports= {
                 title: "dynamic-cdn-webpack-plugin",
                 path: "routes/dynamic-cdn-webpack-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "circular-dependency-plugin",
+                path: "routes/circular-dependency-plugin",
+                sidebarDepth: 2
             }
         ]
     },

@@ -43,7 +43,7 @@ footer: MIT Licensed | Translated By 大笑
 [svg-sprite-webpack-plugin]:routes/svg-sprite-webpack-plugin.html
 [static-site-generator-webpack-plugin]:routes/static-site-generator-webpack-plugin.html
 [dynamic-cdn-webpack-plugin]:routes/dynamic-cdn-webpack-plugin.html
-
+[circular-dependency-plugin]:routes/circular-dependency-plugin.html
 
 | 插件 | 版本 | 描述 |
 |:---:| --- | --- |
@@ -64,7 +64,7 @@ footer: MIT Licensed | Translated By 大笑
 | [svg-sprite-webpack-plugin][svg-sprite-webpack-plugin] | 1.0.4 | 使基于`<use>`的SVG图标系统在webpack中更容易使用。|
 | [static-site-generator-webpack-plugin][static-site-generator-webpack-plugin] | 3.4.2 | 由webpack提供的小体积、精简的静态站点生成器。 |
 | [dynamic-cdn-webpack-plugin][dynamic-cdn-webpack-plugin] | 5.0.0 | 动态地从 CDN 中获取依赖，而非将其捆绑在应用中。  |
-
+| [circular-dependency-plugin][circular-dependency-plugin] | 5.2.0 | 在 webpack 打包时，检测循环依赖的模块。 |
 
 
 
