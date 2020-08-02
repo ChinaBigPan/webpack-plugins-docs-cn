@@ -116,6 +116,11 @@ module.exports= {
                 title: "circular-dependency-plugin",
                 path: "routes/circular-dependency-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "webpack-require-from",
+                path: "routes/webpack-require-from",
+                sidebarDepth: 2
             }
         ]
     },

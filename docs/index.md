@@ -44,6 +44,8 @@ footer: MIT Licensed | Translated By 大笑
 [static-site-generator-webpack-plugin]:routes/static-site-generator-webpack-plugin.html
 [dynamic-cdn-webpack-plugin]:routes/dynamic-cdn-webpack-plugin.html
 [circular-dependency-plugin]:routes/circular-dependency-plugin.html
+[webpack-require-from]:routes/webpack-require-from.html
+
 
 | 插件 | 版本 | 描述 |
 |:---:| --- | --- |
@@ -65,7 +67,7 @@ footer: MIT Licensed | Translated By 大笑
 | [static-site-generator-webpack-plugin][static-site-generator-webpack-plugin] | 3.4.2 | 由webpack提供的小体积、精简的静态站点生成器。 |
 | [dynamic-cdn-webpack-plugin][dynamic-cdn-webpack-plugin] | 5.0.0 | 动态地从 CDN 中获取依赖，而非将其捆绑在应用中。  |
 | [circular-dependency-plugin][circular-dependency-plugin] | 5.2.0 | 在 webpack 打包时，检测循环依赖的模块。 |
-
+| [webpack-require-from][webpack-require-from] | 1.8.1 | 允许为获取动态导入配置路径或 URL 的 webpack 插件。 |
 
 
 
