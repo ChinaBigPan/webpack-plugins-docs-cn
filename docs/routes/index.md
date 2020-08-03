@@ -23,7 +23,7 @@ title: 目录
 [dynamic-cdn-webpack-plugin]:https://github.com/mastilver/dynamic-cdn-webpack-plugin
 [circular-dependency-plugin]:https://github.com/aackerman/circular-dependency-plugin
 [webpack-require-from]:https://github.com/agoldis/webpack-require-from
-
+[css-cleanup-webpack-plugin]:https://github.com/do-web/css-cleanup-webpack-plugin
 
 
 | 插件(点击前往原地址) | 版本 | 描述 |
@@ -47,7 +47,7 @@ title: 目录
 | [dynamic-cdn-webpack-plugin][dynamic-cdn-webpack-plugin] | 5.0.0 | 动态地从 CDN 中获取依赖，而非将其捆绑在应用中。  |
 | [circular-dependency-plugin][circular-dependency-plugin] | 5.2.0 | 在 webpack 打包时，检测循环依赖的模块。 |
 | [webpack-require-from][webpack-require-from] | 1.8.1 | 允许为获取动态导入配置路径或 URL 的 webpack 插件。 |
-
+| [css-cleanup-webpack-plugin][css-cleanup-webpack-plugin] | 1.0.2 | 删除未使用的css和重复的css规则。 |
 
 
 

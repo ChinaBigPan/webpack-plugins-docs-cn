@@ -45,6 +45,7 @@ footer: MIT Licensed | Translated By 大笑
 [dynamic-cdn-webpack-plugin]:routes/dynamic-cdn-webpack-plugin.html
 [circular-dependency-plugin]:routes/circular-dependency-plugin.html
 [webpack-require-from]:routes/webpack-require-from.html
+[css-cleanup-webpack-plugin]:routes/css-cleanup-webpack-plugin.html
 
 
 | 插件 | 版本 | 描述 |
@@ -68,7 +69,7 @@ footer: MIT Licensed | Translated By 大笑
 | [dynamic-cdn-webpack-plugin][dynamic-cdn-webpack-plugin] | 5.0.0 | 动态地从 CDN 中获取依赖，而非将其捆绑在应用中。  |
 | [circular-dependency-plugin][circular-dependency-plugin] | 5.2.0 | 在 webpack 打包时，检测循环依赖的模块。 |
 | [webpack-require-from][webpack-require-from] | 1.8.1 | 允许为获取动态导入配置路径或 URL 的 webpack 插件。 |
-
+| [css-cleanup-webpack-plugin][css-cleanup-webpack-plugin] | 1.0.2 | 删除未使用的css和重复的css规则。 |
 
 
 
