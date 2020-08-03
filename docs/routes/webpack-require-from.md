@@ -76,24 +76,173 @@ window.chunkURL = "https://app.cdn.com/buildXXX/"
 
 ### `methodName`
 
+全局定义的方法名，它将在运行时调用，该方法应该返回动态导入的代码块的路径/URL。
+
+举个例子，如果默认的 URL 是`https://localhost`，包名是`0.js`，配置项为`{methodName: "getChunkURL" }`，同时`window.getChunkURL`将定义为：
+
+```js
+window.getChunkURL = function() {
+  if (true) {
+    // 使用任何条件来选择URL
+    return "https://app.cdn.com/buildXXX/";
+  }
+};
+```
+
+代码块将从`https://app.cdn.com/buildXXX/0.js`获取。
+
+如果与`replaceSrcMethodName`一起使用，chunk URL 将首先被 `window[methodName]`修改，然后修改的值作为一个参数传递给`window[replaceSrcMethodName]`函数。
+
+> **注意：** `path` / `methodName` / `variableName`这三个配置项是互斥的，不可同时使用。
+
+> **注意：** 该方法应该在全局命名空间中定义，并且应该在调用`require.ensure`或`import()`之前定义。请参见下面的例子:
+
+### `replaceSrcMethodName`
+
+全局定义的方法名，它将在运行时调用，该方法接收动态引入的代码块的**完整URL**作为其参数并返回新 URL 的字符串。
+
+举个例子，如果默认的 URL 是`https://localhost`，包名是`0.js`和`common.js`，配置项为`{replaceSrcMethodName: "replaceSrc" }`，同时`window.replaceSrc`将定义为：
+
+```js
+window.replaceSrc = function(originalSrc) {
+  if (originalSrc.match(/common/)) {
+    // 对指定的 chunk 进行重命名
+    return originalSrc.replace(/common/, "static");
+  }
+  return originalSrc;
+};
+```
+
+代码块将从`https://localhost/0.js`和`https://localhost/static.js`获取。
+
+如果同时使用了`methodName`或`variableName`，chunk URL 将首先被 `window[methodName]`修改亦或是修改为`window[variableName]`，然后修改的值作为一个参数传递给`window[replaceSrcMethodName]`函数。
+
+> **注意：** 该方法应该在全局命名空间中定义，并且应该在调用`require.ensure`或`import()`之前定义。
+
+### `supressErrors`
+
+默认值`false`。当无法检测到您在`replaceSrcMethodName`、`methodName`或`variableName`中定义的方法名时，插件将调用`console.error`。打开该配置项将压制错误信息。
+
+## 全局方法和变量
+
+当您的 JS 代码在浏览器中执行时，您作为`variableName`、`methodName`或`replaceSrcMethodName`值的方法/变量名应该在第一次调用`require.ensure()`或`import()`执行**之前**设置。
+
+方法的返回值将用于构建获取资源的 URL。
+
+例如，在执行主包之前我们可以定义一个`veryFirst`的全局方法：
+
+```js
+const window.veryFirst = function () {
+    console.log("I am very first!");
+}
+```
+
+您可以使用单独的文并使用 webpack 的配置项：
+
+```js
+// 文件名: veryFirst.js
+const window.veryFirst = function () {
+ console.log("I am very first!");
+}
+
+// webpack.config.js
+module.exports = {
+  entry: {
+    ['./veryFirst.js', './index.js']
+  }
+}
+```
+
+另一个方法是在服务端构建时将`veryFirst`定义为`index.html`的一部分：
+
+```js
+// 文件名：server/app.js
+app.get("/", (req, res) =>
+  res.render("views/index", {
+    cdnPath: "https://qa.cdn.com/|https://prod.cdn.com/"
+  })
+);
+```
+
+```html
+<!-- 文件名: views/index.ejs -->
+<html>
+<script>
+    const baseCDN = "<%= cdnPath %>";
+    window.veryFirst = function () {
+        console.log(`${baseCDN}/js/`);
+    }
+</script>
+</html>
+```
+
+## Web Workers
+
+使用`replaceSrcMethodName`提供一个修改 web-worker 加载路径的方法。该方法必须是全局可用的，并且必须在 web-worker 内的`import()`调用之前定义。
+
+```js
+/* webpack.config.js */
+  // ...
+  module: {
+    rules: [
+      {
+        test: /worker\.js$/,
+        use: {
+          loader: `worker-loader`
+        }
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin(),
+    new RequireFrom({
+      replaceSrcMethodName: "getSrc"
+    })
+  ]
+  // ...
 
 
+/* worker.js */
+require("./globals.js");
 
+import("./worker-module.js").then(workerModule => {
+  workerModule.default();
+  console.log("loaded workerModule");
+});
+```
 
+**详细信息**
 
+该插件允许更改加载 web-worker 的路径。
 
+[worker-loader]:https://github.com/webpack-contrib/worker-loader
+[importScripts]:https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/importScripts
 
+为达成这个需求，使用了`[worker-loader][worker-loader]`加载器。该加载器使用`[importScripts][importScripts]`从您的 web-worker 中动态加载模块，并支持[跨域web worker](https://benohead.com/cross-domain-cross-browser-web-workers/)。更具体地说：
 
+1. 创建一个新的 webpack 入口，它只包含`new Worker(workerURL)`，而`workerURL`是您的主要 webworker 模块。
+2. 用 webpack 运行时工具增强您的 webworker 主模块。
+3. 使用`importScripts`在 webworker 上下文中动态加载新模块(从而避免跨域限制)。
 
+该插件重写了`importScript`并调用您在`replaceSrcMethodName`中定义的方法。您提供的方法将在调用`importScripts`之前被调用，所需的模块路径作为单个参数。
 
+您可以在[这里](https://github.com/sushain97/web2fs-notepad/commit/06b3ece074f1c1c96d9bb75436181147943f6026#diff-028b78cada5fa9a59260b989f3b86ffeR52)找到本插件联动 web worker 的应用实例。
 
+## 排忧解难
 
+> ${methodName}不是函数，或者在运行时不可用。
 
+- 确保`webpack.config.js`中的方法名与在全局`window`对象中定义的方法名匹配。
+- 确保在第一次调用`require.ensure()`或`import()`**之前**定义该方法。
 
+> 配置`methodName`或`path`中的一个，不要两者都配置。
 
+- `path`和`methodName`是互斥的，不能一起使用，随便使用一个就行。
 
+> ${methodName} 不返回字符串。
 
-
+- 当使用`replaceSrcMethodName`配置项时，调用`window[replaceSrcMethodName]`的结果将被验证——它应该被定义并且是一个字符串。
+- 确保您从`window[replaceSrcMethodName]`返回一个字符串值。
 
 
 
