@@ -26,7 +26,7 @@ title: 目录
 [css-cleanup-webpack-plugin]:https://github.com/do-web/css-cleanup-webpack-plugin
 [dynamic-vendor-webpack-plugin]:https://github.com/lsagetlethias/dynamic-vendor-webpack-plugin
 [define-variable-webpack-plugin]:https://github.com/lsagetlethias/define-variable-webpack-plugin
-
+[hook-shell-script-webpack-plugin]:https://github.com/drewloomer/hook-shell-script-webpack-plugin
 
 
 | 插件(点击前往原地址) | 版本 | 描述 |
@@ -53,7 +53,7 @@ title: 目录
 | [css-cleanup-webpack-plugin][css-cleanup-webpack-plugin] | 1.0.2 | 删除未使用的css和重复的css规则。 |
 | [dynamic-vendor-webpack-plugin][dynamic-vendor-webpack-plugin] | 1.0.0 | 通过动态变量和特定的代码分割来导入第三方依赖库。|
 | [define-variable-webpack-plugin][define-variable-webpack-plugin] | 1.0.1 | 增强了Webpack DefinePlugin在实际变量中存储定义的内容。 |
-
+| [hook-shell-script-webpack-plugin][hook-shell-script-webpack-plugin] | 0.1.1 | 用于在 webpack 编译器钩子被触发时运行任意的 shell 脚本。|
 
 
 

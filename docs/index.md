@@ -47,7 +47,7 @@ footer: MIT Licensed | Translated By 大笑
 [webpack-require-from]:routes/webpack-require-from.html
 [css-cleanup-webpack-plugin]:routes/css-cleanup-webpack-plugin.html
 [define-variable-webpack-plugin]:routes/define-variable-webpack-plugin.html
-
+[hook-shell-script-webpack-plugin]:routes/hook-shell-script-webpack-plugin.html
 
 | 插件 | 版本 | 描述 |
 |:---:| --- | --- |
@@ -73,6 +73,8 @@ footer: MIT Licensed | Translated By 大笑
 | [css-cleanup-webpack-plugin][css-cleanup-webpack-plugin] | 1.0.2 | 删除未使用的css和重复的css规则。 |
 | [dynamic-vendor-webpack-plugin][dynamic-vendor-webpack-plugin] | 1.0.0 | 通过动态变量和特定的代码分割来导入第三方依赖库。|
 | [define-variable-webpack-plugin][define-variable-webpack-plugin] | 1.0.1 | 增强了Webpack DefinePlugin在实际变量中存储定义的内容。 |
+| [hook-shell-script-webpack-plugin][hook-shell-script-webpack-plugin] | 0.1.1 | 用于在 webpack 编译器钩子被触发时运行任意的 shell 脚本。|
+
 
 
 
