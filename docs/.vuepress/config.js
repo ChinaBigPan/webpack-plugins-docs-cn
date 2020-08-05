@@ -121,6 +121,11 @@ module.exports= {
                 title: "webpack-require-from",
                 path: "routes/webpack-require-from",
                 sidebarDepth: 2
+            },
+            {
+                title: "dynamic-vendor-webpack-plugin",
+                path: "routes/dynamic-vendor-webpack-plugin",
+                sidebarDepth: 2
             }
         ]
     },

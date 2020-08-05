@@ -24,6 +24,7 @@ title: 目录
 [circular-dependency-plugin]:https://github.com/aackerman/circular-dependency-plugin
 [webpack-require-from]:https://github.com/agoldis/webpack-require-from
 [css-cleanup-webpack-plugin]:https://github.com/do-web/css-cleanup-webpack-plugin
+[dynamic-vendor-webpack-plugin]:https://github.com/lsagetlethias/dynamic-vendor-webpack-plugin
 
 
 | 插件(点击前往原地址) | 版本 | 描述 |
@@ -48,7 +49,7 @@ title: 目录
 | [circular-dependency-plugin][circular-dependency-plugin] | 5.2.0 | 在 webpack 打包时，检测循环依赖的模块。 |
 | [webpack-require-from][webpack-require-from] | 1.8.1 | 允许为获取动态导入配置路径或 URL 的 webpack 插件。 |
 | [css-cleanup-webpack-plugin][css-cleanup-webpack-plugin] | 1.0.2 | 删除未使用的css和重复的css规则。 |
-
+| [dynamic-vendor-webpack-plugin][dynamic-vendor-webpack-plugin] | 1.0.0 | 通过动态变量和特定的代码分割来导入第三方依赖库。|
 
 
 

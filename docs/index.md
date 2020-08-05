@@ -70,7 +70,7 @@ footer: MIT Licensed | Translated By 大笑
 | [circular-dependency-plugin][circular-dependency-plugin] | 5.2.0 | 在 webpack 打包时，检测循环依赖的模块。 |
 | [webpack-require-from][webpack-require-from] | 1.8.1 | 允许为获取动态导入配置路径或 URL 的 webpack 插件。 |
 | [css-cleanup-webpack-plugin][css-cleanup-webpack-plugin] | 1.0.2 | 删除未使用的css和重复的css规则。 |
-
+| [dynamic-vendor-webpack-plugin][dynamic-vendor-webpack-plugin] | 1.0.0 | 通过动态变量和特定的代码分割来导入第三方依赖库。|
 
 
 
