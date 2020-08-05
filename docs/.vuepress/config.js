@@ -131,6 +131,11 @@ module.exports= {
                 title: "define-variable-webpack-plugin",
                 path: "routes/define-variable-webpack-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "hook-shell-script-webpack-plugin",
+                path: "routes/hook-shell-script-webpack-plugin",
+                sidebarDepth: 2
             }
         ]
     },
