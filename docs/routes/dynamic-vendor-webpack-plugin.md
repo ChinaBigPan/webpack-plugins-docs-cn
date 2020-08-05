@@ -2,7 +2,7 @@
 title: dynamic-vendor-webpack-plugin
 ---
 
-# dynamic-vendor-webpack-plugin <Badge text="v 1.0.0">
+# dynamic-vendor-webpack-plugin <Badge text="v 1.0.0" />
 
 通过动态变量和特定的代码分割来导入第三方依赖库。
 

@@ -126,6 +126,11 @@ module.exports= {
                 title: "dynamic-vendor-webpack-plugin",
                 path: "routes/dynamic-vendor-webpack-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "define-variable-webpack-plugin",
+                path: "routes/define-variable-webpack-plugin",
+                sidebarDepth: 2
             }
         ]
     },

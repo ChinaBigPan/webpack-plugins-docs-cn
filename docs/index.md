@@ -46,6 +46,7 @@ footer: MIT Licensed | Translated By 大笑
 [circular-dependency-plugin]:routes/circular-dependency-plugin.html
 [webpack-require-from]:routes/webpack-require-from.html
 [css-cleanup-webpack-plugin]:routes/css-cleanup-webpack-plugin.html
+[define-variable-webpack-plugin]:routes/define-variable-webpack-plugin.html
 
 
 | 插件 | 版本 | 描述 |
@@ -71,7 +72,7 @@ footer: MIT Licensed | Translated By 大笑
 | [webpack-require-from][webpack-require-from] | 1.8.1 | 允许为获取动态导入配置路径或 URL 的 webpack 插件。 |
 | [css-cleanup-webpack-plugin][css-cleanup-webpack-plugin] | 1.0.2 | 删除未使用的css和重复的css规则。 |
 | [dynamic-vendor-webpack-plugin][dynamic-vendor-webpack-plugin] | 1.0.0 | 通过动态变量和特定的代码分割来导入第三方依赖库。|
-
+| [define-variable-webpack-plugin][define-variable-webpack-plugin] | 1.0.1 | 增强了Webpack DefinePlugin在实际变量中存储定义的内容。 |
 
 
 
