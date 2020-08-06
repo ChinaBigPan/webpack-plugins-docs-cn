@@ -136,6 +136,16 @@ module.exports= {
                 title: "hook-shell-script-webpack-plugin",
                 path: "routes/hook-shell-script-webpack-plugin",
                 sidebarDepth: 2
+            },
+            {
+                title: "stylelint-webpack-plugin",
+                path: "routes/stylelint-webpack-plugin",
+                sidebarDepth: 2
+            },
+            {
+                title: "eslint-webpack-plugin",
+                path: "routes/eslint-webpack-plugin",
+                sidebarDepth: 2
             }
         ]
     },
