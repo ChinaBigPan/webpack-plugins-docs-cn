@@ -47,6 +47,7 @@ footer: MIT Licensed | Translated By 大笑
 [webpack-require-from]:routes/webpack-require-from.html
 [css-cleanup-webpack-plugin]:routes/css-cleanup-webpack-plugin.html
 [define-variable-webpack-plugin]:routes/define-variable-webpack-plugin.html
+[dynamic-vendor-webpack-plugin]:routes/dynamic-vendor-webpack-plugin.html
 [hook-shell-script-webpack-plugin]:routes/hook-shell-script-webpack-plugin.html
 [stylelint-webpack-plugin]:routes/stylelint-webpack-plugin.html
 [eslint-webpack-plugin]:routes/eslint-webpack-plugin.html
