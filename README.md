@@ -27,6 +27,10 @@
 [eslint-webpack-plugin]:https://github.com/webpack-contrib/eslint-webpack-plugin
 
 
+# Webpack 非官方中文插件文档合集
+
+[这里包括了下面的文档](https://chinabigpan.github.io/webpack-plugins-docs-cn/)
+
 | 插件(点击前往原地址) | 版本 | 描述 |
 |:---:| --- | --- |
 | [webpack-build-notifier][webpack-build-notifier] | 2.1.0 | 使用[node-notifier][node-notifier]模块来显示系统级的 Webpack 构建错误和警告通知 |
