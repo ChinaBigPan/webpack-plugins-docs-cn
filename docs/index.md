@@ -13,7 +13,7 @@ meta:
   - name: feversion
     content: 前往 →
   - name: fetags
-    content: "[{'kind': 'webpack', 'text': 'webpack'}, {'kind':'plugin', 'text': '插件'}]"
+    content: "[{'kind': 'iconwebpack', 'text': 'webpack'}, {'kind':'iconTools', 'text': '插件'}]"
 features:
   - title: 
     details: 

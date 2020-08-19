@@ -1,6 +1,6 @@
 module.exports= {
-    title: 'Webpack 插件中文文档集',
-    description: "做一个webpack插件中文文档集",
+    title: 'Webpack Plugins',
+    description: "Webpack 除官网外的插件中文文档集，这里或许有你需要的。",
     base: "/webpack-plugins-docs-cn/",
     markdown: {
         lineNumbers: true,
@@ -14,7 +14,7 @@ module.exports= {
         nav: [
             // {
             //     text: "主站",
-            //     link: "https://febeacon.com"
+            //     link: "http://www.febeacon.com"
             // },
             {
                 text: "文档首页",
