@@ -29,7 +29,7 @@
 
 # Webpack 非官方中文插件文档合集
 
-[这里包括了下面的文档](https://chinabigpan.github.io/webpack-plugins-docs-cn/)
+[这里包括了下面的文档](https://chinabigpan.github.io/webpack-plugins-docs-cn/)  <=== 点这个
 
 | 插件(点击前往原地址) | 版本 | 描述 |
 |:---:| --- | --- |
