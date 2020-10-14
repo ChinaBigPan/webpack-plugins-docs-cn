@@ -7,7 +7,7 @@ actionText: 多种版本 →
 actionLink: /routes/
 meta:
   - name: description
-    content: 个人的Webpack插件中文文档合集
+    content: 各种官方文档外的 webpack 插件合集
   - name: keywords
     content: webpack, plugin
   - name: feversion

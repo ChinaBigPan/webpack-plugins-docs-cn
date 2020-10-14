@@ -1,7 +1,7 @@
 {
   "name": "webpack-plugins-docs-cn",
   "version": "1.0.0",
-  "description": "各种尚未拥有中文文档的 webpack 插件合集",
+  "description": "各种官方文档外的 webpack 插件合集",
   "main": "index.js",
   "author": "大笑 <daguogxp@qq.com>",
   "scripts": {

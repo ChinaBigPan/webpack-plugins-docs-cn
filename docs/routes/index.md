@@ -2,6 +2,8 @@
 title: 目录
 ---
 
+<febeacon />
+
 [imagemin]:https://github.com/imagemin/imagemin
 [node-notifier]:https://github.com/mikaelbr/node-notifier
 [webpack-build-notifier]:https://github.com/RoccoC/webpack-build-notifier#readme
